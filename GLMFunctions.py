@@ -74,4 +74,8 @@ def makeBasis_StimKernel(ktbasprs, nkt):
 #           kbasorth = orthogonal basis
 #           kbasis = standard raised cosine (non-orthogonal) basis
 #==============================================================================
+    neye = ktbasprs['neye']
+    ncos = ktbasprs['ncos']
+    kpeaks = ktbasprs['kpeaks']
+    b = ktbasprs['b']
     return 0
