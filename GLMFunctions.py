@@ -90,5 +90,7 @@ def makeBasis_StimKernel(ktbasprs, nkt):
     db = np.diff(yrnge)/(ncos-1)
     ctrs = np.arange(yrnge[0], yrnge[1]+db, db)
     mxt = invnl(yrnge[1]+2*db)-b
-    kt0 = np.arange(0, mxt, kdt)
+    kt0 = np.arange(0, mxt, kdt)[:,None]
+    nt = np.size(kt0)
+    
     return 0
