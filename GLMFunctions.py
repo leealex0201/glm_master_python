@@ -78,4 +78,17 @@ def makeBasis_StimKernel(ktbasprs, nkt):
     ncos = ktbasprs['ncos']
     kpeaks = ktbasprs['kpeaks']
     b = ktbasprs['b']
+    
+    kdt = 1.0 # Spacing of x axis must be in units of 1
+    
+    # A nonlinearity for stretching along x axis (and its inverse)
+    def nlin(x): return np.log(x+1e-20)
+    def invnl(x): return np.exp(x)-1e-20
+    
+    # Generate basis for raised cosines
+    yrnge = nlin(kpeaks+b)
+    db = np.diff(yrnge)/(ncos-1)
+    ctrs = np.arange(yrnge[0], yrnge[1]+db, db)
+    mxt = invnl(yrnge[1]+2*db)-b
+    kt0 = np.arange(0, mxt, kdt)
     return 0
